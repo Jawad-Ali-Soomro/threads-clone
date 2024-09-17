@@ -142,6 +142,21 @@
       background: orange;
     }
   }
+  .err-message {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: white;
+    font-size: 0.6rem;
+    justify-content: end;
+    p {
+      border: 1px solid red;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+  }
 }
 .form::after {
   content: attr(data-after);

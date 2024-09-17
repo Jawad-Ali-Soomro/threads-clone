@@ -2,6 +2,7 @@ import { BsEye, BsEyeSlash, BsThreads } from "react-icons/bs";
 import "../_styles/login.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,9 +13,29 @@ const Login = () => {
   });
 
   const handleLoginDataChange = (e) => {
-    setLoginData({
-      [e.target.name]: e.target.value,
-    });
+    setLoginData((prevData) => ({
+      ...prevData, // Spread the previous state
+      [e.target.name]: e.target.value, // Update the specific field
+    }));
+  };
+
+  const [message, setMessage] = useState(false);
+
+  const loginFunction = async () => {
+    const loginResponse = await axios.post(
+      "http://localhost:8080/api/user/login",
+      {
+        email: loginData.email,
+        password: loginData.password,
+      }
+    );
+    console.log(loginResponse.data);
+
+    const loggedIn = loginResponse?.data?.message == "Logged In";
+    loggedIn
+      ? window.localStorage.setItem("userToken", loginResponse?.data?.token) +
+        window.location.reload()
+      : setMessage(loginResponse?.data?.message);
   };
 
   return (
@@ -46,7 +67,19 @@ const Login = () => {
             {isPassword ? <BsEye /> : <BsEyeSlash />}
           </div>
         </div>
-        <button style={{ background: "orange", color: "white" }}>LOGIN</button>
+        {message ? (
+          <div className="err-message flex">
+            <p>{message}</p>
+          </div>
+        ) : (
+          this
+        )}
+        <button
+          style={{ background: "orange", color: "white" }}
+          onClick={loginFunction}
+        >
+          LOGIN
+        </button>
         <div className="or-text flex">
           <p>OR</p>
         </div>

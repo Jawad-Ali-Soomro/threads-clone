@@ -5,11 +5,13 @@ import Login from "./_auth/Login";
 import "./globals.scss";
 import Home from "./_pages/Home";
 import Register from "./_auth/Register";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  const userToken = window.localStorage.getItem("googleUserInfo");
+  const userToken = window.localStorage.getItem("userToken");
   return (
     <>
+      <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={userToken ? <Home /> : <Login />}></Route>

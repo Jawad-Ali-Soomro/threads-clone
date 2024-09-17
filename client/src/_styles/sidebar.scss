@@ -5,6 +5,9 @@
   padding-top: 20px;
   justify-content: space-between;
   padding-bottom: 10px;
+  position: fixed;
+  left: 0;
+  top: 0;
   .logo {
     font-size: 2rem;
     cursor: pointer;
@@ -41,23 +44,23 @@
       background: white;
     }
     .main-menu {
-      width: 180px;
+      width: 50px;
       height: 250px;
       background: rgba($color: white, $alpha: 0.1);
       border-radius: 20px;
       position: absolute;
       left: 50px;
       bottom: 0;
-      overflow: hidden;
       transition: 0.3s;
       .card {
-        width: 120px;
+        width: 40px !important;
         height: 40px;
-        padding: 0px 20px;
         background: transparent;
+        justify-content: center;
         border-radius: 15px;
         transition: 0.3s;
         color: rgba($color: white, $alpha: 0.5);
+        position: relative;
         p {
           font-size: 0.7rem;
           text-transform: uppercase;
@@ -67,6 +70,90 @@
       .card:hover {
         background: rgba($color: white, $alpha: 0.1);
         color: white;
+      }
+      .card:hover::after {
+        content: attr(data-nav);
+        position: absolute;
+        width: 150px;
+        height: 40px;
+        background: #ccbdc352;
+        left: 50px;
+        top: 00px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .upload-sect {
+    width: 100%;
+    height: 100vh;
+    background: rgba($color: black, $alpha: 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    .upload-wrap {
+      background: #222;
+      border-radius: 10px;
+      border: 1px solid #80808027;
+      padding: 30px;
+      align-items: start;
+      .profile {
+        gap: 5px;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+        p {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+      }
+      input {
+        margin-top: 10px;
+        width: 300px;
+        height: 30px;
+        font-size: 0.6rem;
+        border: none;
+        border-bottom: 1px solid #80808090;
+        background: transparent;
+        outline: none;
+        color: white;
+        transition: 0.3s;
+      }
+      input:focus-within {
+        border-bottom: 1px solid;
+      }
+      input::placeholder {
+        text-transform: uppercase;
+      }
+      .icons {
+        gap: 20px;
+        padding-top: 20px;
+
+        .icon {
+          cursor: pointer;
+        }
+      }
+      button {
+        width: 100px;
+        height: 30px;
+        background: rgba($color: white, $alpha: 0.2);
+        border: none;
+        border-radius: 10px;
+        margin-left: 200px;
+        color: white;
+        font-size: 0.6rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        border: 1px solid #80808090;
       }
     }
   }
