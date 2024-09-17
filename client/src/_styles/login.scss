@@ -1,0 +1,110 @@
+.form {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid;
+  color: #333;
+  .icon {
+    font-size: 3rem;
+    color: white;
+    padding-bottom: 20px;
+  }
+  gap: 10px;
+
+  .input-wrap {
+    width: 320px;
+    height: 45px;
+    background: rgba($color: white, $alpha: 0.05);
+    border-radius: 10px;
+    border: 1px solid transparent;
+    position: relative;
+    input {
+      width: 300px;
+      color: white;
+      height: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding-left: 20px;
+      font-size: 0.7rem;
+    }
+    .is-pass {
+      position: absolute;
+      right: 20px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .input-wrap:focus-within {
+    border: 1px solid #80808090;
+  }
+  button {
+    width: 120px;
+    height: 40px;
+    background: white;
+    margin-left: 200px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .or-text {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    p {
+      padding: 0px 20px;
+      font-size: 0.7rem;
+      color: white;
+      background: #111;
+      z-index: 1;
+    }
+  }
+  .or-text::after {
+    content: "";
+    width: 320px;
+    height: 1px;
+    background: #80808090;
+    position: absolute;
+  }
+  .continue {
+    border-radius: 10px;
+    color: white;
+    gap: 20px;
+    .icon-continue {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+      border: 1px solid #80808090;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .icon-continue:hover {
+      background: rgba($color: white, $alpha: 0.1);
+      border: 1px solid transparent;
+    }
+  }
+}
+.form::after {
+  content: "Login";
+  position: absolute;
+  background: rgba($color: white, $alpha: 1);
+  transform: rotate(-90deg);
+  left: -70px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  top: 60px;
+  width: 100px;
+  height: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
