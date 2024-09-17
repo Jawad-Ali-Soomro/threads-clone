@@ -1,4 +1,4 @@
-import { BsImage, BsThreads } from "react-icons/bs";
+import { BsThreads } from "react-icons/bs";
 import "../_styles/sidebar.scss";
 import {
   BiBug,
@@ -10,15 +10,11 @@ import {
   BiSolidDashboard,
   BiUser,
 } from "react-icons/bi";
-import { PiHouse, PiImage } from "react-icons/pi";
+import { PiHouse } from "react-icons/pi";
 import { useState } from "react";
 import { FiSettings } from "react-icons/fi";
 import { useEffect } from "react";
 import axios from "axios";
-import { CgImage } from "react-icons/cg";
-import { FaHashtag, FaImage } from "react-icons/fa";
-import { GoImage } from "react-icons/go";
-import { ImImage } from "react-icons/im";
 import { HiHashtag } from "react-icons/hi";
 import { MdAnimation } from "react-icons/md";
 const Sidebar = () => {
