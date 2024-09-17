@@ -1,10 +1,17 @@
+.img-main {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
 .form {
-  width: 400px;
-  height: 500px;
+  width: 370px;
+  height: 420px;
   position: relative;
   border-radius: 20px;
-  border: 1px solid;
+  border: 1px solid orange;
   color: #333;
+  background: #111;
   .icon {
     font-size: 3rem;
     color: white;
@@ -12,13 +19,15 @@
   }
   gap: 10px;
 
-  .input-wrap {
+  .input-wrap,
+  .file {
     width: 320px;
     height: 45px;
     background: rgba($color: white, $alpha: 0.05);
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 166, 0, 0.1);
     position: relative;
+
     input {
       width: 300px;
       color: white;
@@ -36,26 +45,68 @@
       cursor: pointer;
     }
   }
+  .file {
+    height: 100px;
+    border: 1px solid;
+    position: relative;
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 10;
+      cursor: pointer;
+    }
+  }
+  .file-content {
+    p {
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9rem;
+      span {
+        font-size: 0.7rem;
+      }
+    }
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 0;
+    outline: none !important;
+  }
+
+  .file:focus-within {
+    border: 1px solid transparent;
+  }
 
   .input-wrap:focus-within {
-    border: 1px solid #80808090;
+    border: 1px solid orange;
   }
   button {
-    width: 120px;
+    width: 150px;
     height: 40px;
-    background: white;
-    margin-left: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-left: 170px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: white;
   }
 
   .or-text {
     position: relative;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 170px;
     p {
       padding: 0px 20px;
       font-size: 0.7rem;
@@ -66,7 +117,7 @@
   }
   .or-text::after {
     content: "";
-    width: 320px;
+    width: 150px;
     height: 1px;
     background: #80808090;
     position: absolute;
@@ -74,28 +125,31 @@
   .continue {
     border-radius: 10px;
     color: white;
-    gap: 20px;
+    justify-content: end;
+    width: 100%;
+    padding-right: 50px;
+    gap: 8px;
     .icon-continue {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       font-size: 1.2rem;
-      border: 1px solid #80808090;
+      background: rgba(255, 166, 0, 0.154);
       border-radius: 10px;
       cursor: pointer;
+      transition: 0.3s;
     }
     .icon-continue:hover {
-      background: rgba($color: white, $alpha: 0.1);
-      border: 1px solid transparent;
+      background: orange;
     }
   }
 }
 .form::after {
-  content: "Login";
+  content: attr(data-after);
   position: absolute;
-  background: rgba($color: white, $alpha: 1);
+  background: orange;
   transform: rotate(-90deg);
   left: -70px;
-  color: #333;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,0 +1,73 @@
+.side-bar {
+  width: 60px;
+  height: calc(100vh - 40px);
+  padding-bottom: 20px;
+  padding-top: 20px;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  .logo {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .navs {
+    gap: 10px;
+    .icon {
+      width: 50px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 10px;
+      color: rgba($color: white, $alpha: 0.5);
+      transition: 0.3s;
+    }
+    .icon:hover {
+      background: rgba($color: white, $alpha: 0.1);
+      color: white;
+    }
+    .bg {
+      width: 60px;
+      height: 40px;
+      background: rgba($color: white, $alpha: 0.1);
+      border-radius: 10px;
+    }
+  }
+  .more {
+    gap: 4px;
+    cursor: pointer;
+    position: relative;
+    div {
+      width: 25px;
+      height: 2px;
+      background: white;
+    }
+    .main-menu {
+      width: 180px;
+      height: 250px;
+      background: rgba($color: white, $alpha: 0.1);
+      border-radius: 20px;
+      position: absolute;
+      left: 50px;
+      bottom: 0;
+      overflow: hidden;
+      transition: 0.3s;
+      .card {
+        width: 120px;
+        height: 40px;
+        padding: 0px 20px;
+        background: transparent;
+        border-radius: 15px;
+        transition: 0.3s;
+        color: rgba($color: white, $alpha: 0.5);
+        p {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+      }
+      .card:hover {
+        background: rgba($color: white, $alpha: 0.1);
+        color: white;
+      }
+    }
+  }
+}
