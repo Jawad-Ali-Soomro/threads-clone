@@ -33,7 +33,6 @@ const Register = () => {
           avatar: fileUrl,
         }
       );
-
       const registered = registerResponse?.data?.message == "Account Created!";
       if (registered) {
         toast.success("Account Created");

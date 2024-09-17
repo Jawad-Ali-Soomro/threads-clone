@@ -17,6 +17,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { HiHashtag } from "react-icons/hi";
 import { MdAnimation } from "react-icons/md";
+import { uploadImage } from "../_global/uploadImage";
+import toast from "react-hot-toast";
 const Sidebar = () => {
   const activeTab = window.location.pathname;
   const [showMenu, setShowMenu] = useState(false);
@@ -39,10 +41,38 @@ const Sidebar = () => {
     );
     setUserInfo(data?.data?.user?.findByEmail);
   };
-
   useEffect(() => {
     getUserInfo();
   }, [showUpload]);
+
+  const [fileUrl, setFileUrl] = useState();
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    const uploadedFile = await uploadImage({ file });
+    if (uploadedFile) {
+      setFileUrl(uploadedFile.secure_url);
+    }
+  };
+
+  const [threadContent, setThreadContent] = useState();
+  const uploadThread = async () => {
+    if (!threadContent) {
+      return toast.error("Please Write A Threat!");
+    }
+    const createdThreat = await axios.post(
+      "http://localhost:8080/api/thread/create",
+      {
+        title: "",
+        content: threadContent,
+        image: fileUrl,
+        author: userInfo?._id,
+      }
+    );
+    createdThreat?.data?.message == "Thread created"
+      ? window.location.reload()
+      : toast.error("Error while creating threat!");
+  };
+
   return (
     <div className="side-bar flex col">
       <div className="logo flex">
@@ -106,9 +136,20 @@ const Sidebar = () => {
               <img src={userInfo?.avatar} alt="" />
               <p>{userInfo?.username}</p>
             </div>
-            <input type="text" placeholder="Start A Thread!" />
+            <input
+              type="text"
+              placeholder="Start A Thread!"
+              value={threadContent}
+              onChange={(e) => setThreadContent(e.target.value)}
+            />
+            {fileUrl ? (
+              <img className="upload-image" src={fileUrl} alt="" />
+            ) : (
+              this
+            )}
             <div className="icons flex">
               <div className="icon flex">
+                <input type="file" onChange={handleFileChange} />
                 <BiImage />
               </div>
               <div className="icon flex">
@@ -118,7 +159,7 @@ const Sidebar = () => {
                 <HiHashtag />
               </div>
             </div>
-            <button>POST</button>
+            <button onClick={uploadThread}>POST</button>
           </div>
         </div>
       ) : (
