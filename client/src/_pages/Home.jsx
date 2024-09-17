@@ -16,6 +16,8 @@ const Home = () => {
     getThreadData();
   }, [threadData]);
 
+  console.log(threadData);
+
   return (
     <div>
       <Sidebar />
@@ -27,7 +29,9 @@ const Home = () => {
                 <div className="profile flex">
                   <div className="left-profile flex">
                     <img src={thread?.author?.avatar} alt="" />
-                    <p>{thread?.author?.username}</p>
+                    <p style={{ textTransform: "lowercase" }}>
+                      @{thread?.author?.username.split(" ")}
+                    </p>
                   </div>
                   <div className="more flex">
                     <div></div>
@@ -39,8 +43,9 @@ const Home = () => {
                 <img src={thread?.image} alt="" />
                 <div className="line"></div>
                 <div className="icons flex">
-                  <div className="icon flex">
+                  <div className="icon flex" style={{ gap: "5px" }}>
                     <BiHeart />
+                    <p>{thread?.likedBy?.length}</p>
                   </div>
                   <div className="icon flex">
                     <BiComment />
@@ -55,6 +60,9 @@ const Home = () => {
               </div>
             );
           })}
+          {/* <p style={{ marginTop: "50px" }}>
+            2024 Threads Clone - Developed By Jawad Ali
+          </p> */}
         </div>
       </div>
     </div>
