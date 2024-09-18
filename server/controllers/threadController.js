@@ -50,11 +50,32 @@ exports.likeUnlikeThread = async (req, res) => {
     console.error(error);
   }
 };
-
 exports.getThreadById = async (req, res) => {
-  const { threadId } = req.params;
-  const foundThread = await Thread.findById(threadId)
-    .populate("author")
-    .populate("likedBy");
-  return res.json({ foundThread });
+  try {
+    const { threadId } = req.params;
+
+    // Fetch the thread by ID and populate author, likedBy, and comments
+    const foundThread = await Thread.findById(threadId)
+      .populate({
+        path: "author", // Populate the thread's author
+        select: "name email bio avatar", // Specify the fields to include from the author
+      })
+      .populate("likedBy") // Populate likedBy field with selected fields (optional)
+      .populate({
+        path: "comments", // Populate comments
+        populate: {
+          path: "author", // Populate the author field inside each comment
+          select: "username email bio avatar", // Specify which fields to include from the author
+        },
+      });
+
+    if (!foundThread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+
+    return res.json({ foundThread });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
 };
