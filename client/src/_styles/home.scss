@@ -1,19 +1,19 @@
 .main-threads {
   width: calc(100% - 60px);
   margin-left: 60px;
-  height: 100vh;
-  padding-top: 10vh;
+  max-height: 85vh;
+  margin-top: 12vh;
+  overflow: scroll;
   gap: 50px;
   flex-wrap: wrap;
   .threads {
     gap: 20px;
     padding-bottom: 50px;
     .card {
-      //   background: rgba($color: white, $alpha: 0.1);
       background: #111b22;
       padding: 30px;
       width: 400px;
-      align-items: start;
+      align-items: center;
       border-radius: 20px;
       gap: 20px;
       .profile {
@@ -26,7 +26,9 @@
           img {
             width: 40px;
             height: 40px;
+            cursor: pointer;
             border-radius: 20px;
+            border: 1px solid #80808090;
           }
           p {
             font-weight: 600;
@@ -39,11 +41,34 @@
           height: 20px;
           border-radius: 5px;
           gap: 4px;
+          position: relative;
+          cursor: pointer;
           div {
             width: 3px;
             height: 3px;
             background: white;
             border-radius: 3px;
+          }
+          .options {
+            width: 50px;
+            background: rgba($color: #111b22, $alpha: 1);
+            position: absolute;
+            top: 30px;
+            right: -5px;
+            border-radius: 10px;
+            transition: 0.3s;
+            overflow: hidden;
+            flex-direction: column;
+            gap: 5px;
+            .card-icon {
+              background: transparent;
+              width: 40px !important;
+              height: 40px !important;
+              border-radius: 10px;
+            }
+            .card-icon:hover {
+              background: rgba($color: white, $alpha: 0.1);
+            }
           }
         }
       }
@@ -52,10 +77,14 @@
         text-align: justify;
         font-size: 0.8rem;
         font-weight: 300;
+        width: 400px;
+        cursor: pointer;
       }
       img {
         max-width: 400px;
         max-height: 400px;
+        justify-content: center !important;
+        cursor: pointer;
       }
       .line {
         width: 400px;
@@ -63,6 +92,9 @@
         background: #80808090;
       }
       .icons {
+        width: 100%;
+        align-items: start;
+        justify-content: start;
         gap: 10px;
         .icon {
           width: 40px;
@@ -70,9 +102,42 @@
           background: transparent;
           transition: 0.1s;
           border-radius: 50%;
+          position: relative;
           cursor: pointer;
+          z-index: 0;
         }
-        .icon:not(:first-child):hover {
+        .after::after {
+          content: attr(data-after);
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: -5px;
+          right: -5px;
+          background: rgba($color: blue, $alpha: 0.5);
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.6rem;
+          z-index: -1;
+        }
+        .after:first-child::after {
+          content: attr(data-after);
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          top: -5px;
+          right: -5px;
+          background: rgba($color: red, $alpha: 1);
+          border: 1px solid #111b22;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.6rem;
+          z-index: -1;
+        }
+        .icon:hover {
           background: rgba($color: white, $alpha: 0.1);
         }
       }

@@ -7,6 +7,7 @@ import {
   BiLogOut,
   BiPlus,
   BiSearch,
+  BiSend,
   BiSolidDashboard,
   BiUser,
 } from "react-icons/bi";
@@ -19,12 +20,15 @@ import { HiHashtag } from "react-icons/hi";
 import { MdAnimation } from "react-icons/md";
 import { uploadImage } from "../_global/uploadImage";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const activeTab = window.location.pathname;
   const [showMenu, setShowMenu] = useState(false);
   const [showUpload, setShowUplaod] = useState(false);
+  const navigate = useNavigate();
   const handleLogout = () => {
     window.localStorage.clear();
+    navigate("/");
     window.location.reload();
   };
   const onHide = () => setShowUplaod(false);
@@ -43,7 +47,7 @@ const Sidebar = () => {
   };
   useEffect(() => {
     getUserInfo();
-  }, [showUpload]);
+  }, [showMenu]);
 
   const [fileUrl, setFileUrl] = useState();
   const handleFileChange = async (e) => {
@@ -75,13 +79,33 @@ const Sidebar = () => {
 
   return (
     <div className="side-bar flex col">
-      <div className="logo flex">
+      <div className="top-bar flex">
+        <img
+          src={userInfo?.avatar}
+          alt=""
+          onClick={() => navigate("/profile")}
+          style={{ cursor: "pointer" }}
+        />
+
+        <input
+          type="text"
+          value={threadContent}
+          onChange={(e) => setThreadContent(e.target.value)}
+          placeholder="What's on your mind..."
+        />
+
+        <div className="icon flex" onClick={() => setShowUplaod(true)}>
+          <BiSend />
+        </div>
+      </div>
+      <div className="logo flex" onClick={() => navigate("/")}>
         <BsThreads />
       </div>
       <div className="navs flex col">
         <div
           className="icon flex"
           style={{ color: `${activeTab == "/" ? "white" : ""}` }}
+          onClick={() => navigate("/")}
         >
           <PiHouse />
         </div>
@@ -94,7 +118,11 @@ const Sidebar = () => {
         <div className="icon flex">
           <BiHeart />
         </div>
-        <div className="icon flex">
+        <div
+          className="icon flex"
+          style={{ color: `${activeTab == "/profile" ? "white" : ""}` }}
+          onClick={() => navigate("/profile")}
+        >
           <BiUser />
         </div>
       </div>
@@ -109,7 +137,16 @@ const Sidebar = () => {
             overflow: `${showMenu ? "" : "hidden"}`,
           }}
         >
-          <div className="card flex" data-nav="profile">
+          <div
+            className="card flex"
+            data-nav="profile"
+            style={{
+              color: `${activeTab == "/profile" ? "white" : ""}`,
+              background: `${
+                activeTab == "/profile" ? "rgba(255,255,255,.1)" : ""
+              }`,
+            }}
+          >
             <BiUser />
           </div>
           <div className="card flex" data-nav="DASHBOARD">
