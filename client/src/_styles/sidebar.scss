@@ -27,7 +27,7 @@
     .icon {
       width: 40px;
       height: 40px;
-      background: rgba($color: white, $alpha: 0.1);
+      background: #111b22;
       border-radius: 50%;
       cursor: pointer;
       position: relative;
@@ -42,7 +42,7 @@
       width: 300px;
       height: 40px;
       border-radius: 20px;
-      background: rgba($color: white, $alpha: 0.1);
+      background: #111b22;
       border: none;
       padding-left: 20px;
       color: white;
@@ -65,13 +65,13 @@
       transition: 0.3s;
     }
     .icon:hover {
-      background: rgba($color: white, $alpha: 0.1);
+      background: #111b22;
       color: white;
     }
     .bg {
       width: 60px;
       height: 40px;
-      background: rgba($color: white, $alpha: 0.1);
+      background: #111b22;
       border-radius: 10px;
     }
   }
@@ -87,7 +87,7 @@
     .main-menu {
       width: 50px;
       height: 250px;
-      background: rgba($color: white, $alpha: 0.1);
+      background: #111b22;
       border-radius: 20px;
       position: absolute;
       left: 50px;
@@ -117,7 +117,7 @@
         position: absolute;
         width: 150px;
         height: 40px;
-        background: #ccbdc352;
+        background: rgba($color: white, $alpha: 0.05);
         left: 50px;
         top: 00px;
         border-radius: 20px;
@@ -138,7 +138,7 @@
     left: 0;
     z-index: 10000;
     .upload-wrap {
-      background: #222;
+      background: #111b22;
       border-radius: 10px;
       border: 1px solid #80808027;
       padding: 30px;

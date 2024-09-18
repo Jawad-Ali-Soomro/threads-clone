@@ -36,7 +36,7 @@
       }
     }
     .line {
-      width: 400px;
+      width: 300px;
       height: 1px;
       background: #8080803b;
       margin-top: 10px;
@@ -48,6 +48,7 @@
         width: 400px;
         font-size: 0.8rem;
         font-weight: 400;
+        text-align: justify;
       }
       img {
         max-width: 400px;
@@ -73,16 +74,16 @@
       gap: 10px;
       h2 {
         font-weight: 600;
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-size: 1.2rem;
       }
       .comment-card {
         width: 400px;
         justify-content: start;
         align-items: start;
-        border-bottom: 1px solid #8080803b;
         padding-bottom: 10px;
         margin-top: 20px;
+        position: relative;
         .profile {
           img {
             width: 30px !important;
@@ -98,8 +99,9 @@
               text-transform: lowercase;
             }
             p {
-              max-width: 350px;
-              font-size: 0.7rem;
+              max-width: 330px;
+              text-align: justify;
+              font-size: 0.8rem;
               padding-left: 20px;
             }
           }
@@ -119,6 +121,24 @@
             background: rgba($color: white, $alpha: 0.1);
           }
         }
+      }
+      .comment-card::after {
+        content: "";
+        width: calc(100% - 30px);
+        margin-left: 20px;
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        background: #80808090;
+      }
+      .comment-card::before {
+        content: "";
+        width: 1px;
+        height: calc(100% - 40px);
+        left: 20px;
+        top: 40px;
+        background: #80808090;
+        position: absolute;
       }
     }
     .add-comment {

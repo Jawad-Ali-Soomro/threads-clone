@@ -167,9 +167,6 @@ const Home = () => {
                     <BiComment />
                   </div>
                   <div className="icon flex">
-                    <CgRepeat />
-                  </div>
-                  <div className="icon flex">
                     <CgShare />
                   </div>
                 </div>

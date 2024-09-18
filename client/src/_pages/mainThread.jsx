@@ -66,7 +66,13 @@ const MainThread = () => {
             <img src={threadData?.author?.avatar} alt="" />
             <h3>{threadData?.author?.username}</h3>
           </div>
-          <button>Follow</button>
+          <button>
+            {threadData?.author?._id === userInfo?._id
+              ? "VIEW"
+              : userInfo?.followers?.includes(threadData?.author?._id)
+              ? "UNFOLLOW"
+              : "FOLLOW"}
+          </button>
         </div>
         <div className="line"></div>
         <div className="content flex col">
@@ -76,7 +82,9 @@ const MainThread = () => {
 
           {threadData?.likedBy?.length >= 1 ? (
             <div className="reactions flex">
-              <p style={{ marginRight: "10px" }}>Liked By</p>
+              <p style={{ marginRight: "10px", color: "rgba(255,255,255,.5)" }}>
+                Liked By
+              </p>
               <img src={threadData?.likedBy[0]?.avatar} alt="" />
               {threadData?.likedBy?.length > 1 ? (
                 <img src={threadData?.likedBy[1]?.avatar} alt="" />
@@ -84,6 +92,18 @@ const MainThread = () => {
               {threadData?.likedBy?.length > 2 ? (
                 <img src={threadData?.likedBy[2]?.avatar} alt="" />
               ) : null}
+              <p
+                style={{
+                  marginLeft: "10px",
+                  color: "rgba(255,255,255,.5)",
+                  paddingBottom: "15px",
+                  fontSize: ".5rem",
+                }}
+              >
+                {threadData?.likedBy?.length >= 4
+                  ? +threadData?.likedBy?.length - 3 + " More"
+                  : this}
+              </p>
             </div>
           ) : (
             this
@@ -98,7 +118,9 @@ const MainThread = () => {
                     <div className="flex">
                       <img src={comment?.author?.avatar} alt="" />
                       <div className="flex col">
-                        <h3>@{comment?.author?.username.split(" ")}</h3>
+                        <h3 style={{ color: "rgba(255,255,255,.5)" }}>
+                          @{comment?.author?.username.split(" ")}
+                        </h3>
                         <p>{comment?.content}</p>
                       </div>
                     </div>
@@ -123,7 +145,7 @@ const MainThread = () => {
             <img src={userInfo?.avatar} alt="" />
             <input
               type="text"
-              placeholder="Add"
+              placeholder="comment publically..."
               value={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
             />

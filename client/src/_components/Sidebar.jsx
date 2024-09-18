@@ -91,7 +91,7 @@ const Sidebar = () => {
           type="text"
           value={threadContent}
           onChange={(e) => setThreadContent(e.target.value)}
-          placeholder="What's on your mind..."
+          placeholder="start thread..."
         />
 
         <div className="icon flex" onClick={() => setShowUplaod(true)}>
@@ -112,7 +112,14 @@ const Sidebar = () => {
         <div className="icon flex">
           <BiSearch />
         </div>
-        <div className="icon bg flex" onClick={() => setShowUplaod(true)}>
+        <div
+          className="icon bg flex"
+          style={{
+            background: `${showUpload ? "white" : ""}`,
+            color: `${showUpload ? "black" : ""}`,
+          }}
+          onClick={() => setShowUplaod(true)}
+        >
           <BiPlus />
         </div>
         <div className="icon flex">

@@ -6,6 +6,7 @@ import axios from "axios";
 import { BiPencil } from "react-icons/bi";
 import { GoVerified } from "react-icons/go";
 import { BsInfo } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState();
@@ -24,7 +25,7 @@ const Profile = () => {
     getUserInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(userInfo);
+  const navigate = useNavigate();
 
   return (
     <div className="profile-container flex col">
@@ -81,8 +82,18 @@ const Profile = () => {
                         <div></div>
                       </div>
                     </div>
-                    <p>{thread?.content}</p>
-                    <img src={thread?.image} alt="" />
+                    <p
+                      style={{ cursor: "pointer" }}
+                      onClick={() => navigate(`/thread/${thread?._id}`)}
+                    >
+                      {thread?.content.substring(0, 90)}...
+                    </p>
+                    <img
+                      style={{ cursor: "pointer" }}
+                      onClick={() => navigate(`/thread/${thread?._id}`)}
+                      src={thread?.image}
+                      alt=""
+                    />
                     <div className="line"></div>
                     <div className="btns flex">
                       <button>
