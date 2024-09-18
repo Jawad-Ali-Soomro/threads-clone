@@ -17,19 +17,31 @@ Welcome to the **Threads Clone App**, a social media platform inspired by the po
 
 ## Technologies Used
 
-- **Frontend**: React, Redux, WebSockets
+- **Frontend**: React, Redux
 - **Backend**: Node.js, Express, MongoDB, Mongoose
 - **Authentication**: JWT (JSON Web Tokens)
-- **Real-time Communication**: Socket.io
 - **Database**: MongoDB
-- **Storage**: IPFS for user avatars (Pinata)
+- **Storage**: Cloudinary for user avatars (Pinata)
 - **Web3 Wallet Integration**: MetaMask, Trust Wallet, etc.
-- **Other**: Axios, TailwindCSS, Material-UI
+- **Other**: Axios, React Hot Toast
 
 ## Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/username/threads-clone.git
    cd threads-clone
+   ```
+
+2. **Install Dependencies:**
+
+   ```bash
+    npm install
+   ```
+
+3. **You Are Good To Go:**
+
+   ```bash
+    npm ren dev
    ```
