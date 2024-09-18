@@ -1,3 +1,9 @@
+[Home]('./images/home.png')
+[Login]('./images/login.png')
+[Register]('./images/register.png')
+[Create]('./images/create.png')
+[Profile]('./images/profile.png')
+
 # Threads Clone App
 
 Welcome to the **Threads Clone App**, a social media platform inspired by the popular Threads application. This app allows users to create threads, comment, like, and engage in conversations within a modern, feature-rich interface.
