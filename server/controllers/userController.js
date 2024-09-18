@@ -27,7 +27,7 @@ exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const findByEmail = await User.findOne({ email });
+    const findByEmail = await User.findOne({ email }).populate("threads");
 
     if (!findByEmail) {
       return res.json({

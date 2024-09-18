@@ -20,3 +20,41 @@ exports.getAllThreads = async (req, res) => {
     foundThreads,
   });
 };
+
+exports.likeUnlikeThread = async (req, res) => {
+  const { threadId } = req.params; // threadId from URL parameters
+  const { userId } = req.body; // assuming you have user info from auth middleware
+
+  try {
+    const thread = await Thread.findById(threadId);
+
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+    const isLiked = thread.likedBy.includes(userId);
+
+    if (isLiked) {
+      thread.likedBy = thread.likedBy.filter(
+        (id) => id.toString() !== userId.toString()
+      );
+    } else {
+      thread.likedBy.push(userId);
+    }
+    await thread.save();
+    return res.status(200).json({
+      message: isLiked ? "Thread unliked" : "Thread liked",
+      likedBy: thread.likedBy,
+      likeCount: thread.likedBy.length,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+exports.getThreadById = async (req, res) => {
+  const { threadId } = req.params;
+  const foundThread = await Thread.findById(threadId)
+    .populate("author")
+    .populate("likedBy");
+  return res.json({ foundThread });
+};
