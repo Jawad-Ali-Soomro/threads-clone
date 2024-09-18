@@ -1,8 +1,8 @@
-[Home]('./images/home.png')
-[Login]('./images/login.png')
-[Register]('./images/register.png')
-[Create]('./images/create.png')
-[Profile]('./images/profile.png')
+[Home](./images/home.png)
+[Login](./images/login.png)
+[Register](./images/register.png)
+[Create](./images/create.png)
+[Profile](./images/profile.png)
 
 # Threads Clone App
 
