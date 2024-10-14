@@ -3,7 +3,7 @@ import Sidebar from "../_components/Sidebar";
 import axios from "axios";
 import "../_styles/home.scss";
 import { BiBookmark, BiComment, BiHeart, BiTrash } from "react-icons/bi";
-import { CgRepeat, CgShare } from "react-icons/cg";
+import { CgShare } from "react-icons/cg";
 import { BsEyeSlash } from "react-icons/bs";
 import { CiWarning } from "react-icons/ci";
 import { PiLinkSimple } from "react-icons/pi";
